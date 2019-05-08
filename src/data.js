@@ -8,7 +8,8 @@ export const data = [{
     "category": "Social",
     "rating": "4.9",
     "downloads": "86,616,849+",
-    "age_required": "16+"
+    "age_required": "16+",
+    "download": "download"
 },
 {
     "name": "Wikipedia",
@@ -20,7 +21,8 @@ export const data = [{
     "category": "Info",
     "rating": "4.2",
     "downloads": "3,734,257+",
-    "age_required": "5+"
+    "age_required": "5+",
+    "download": "download"
 },
 {
     "name": "Youtube",
@@ -32,7 +34,8 @@ export const data = [{
     "category": "Entertainment",
     "rating": "4.9",
     "downloads": "79,725,839+",
-    "age_required": "16+"
+    "age_required": "16+",
+    "download": ""
 },
 {
     "name": "Miniclip",
@@ -44,7 +47,8 @@ export const data = [{
     "category": "Games",
     "rating": "",
     "downloads": "231,704+",
-    "age_required" : "6+"
+    "age_required" : "6+",
+    "download": ""
 },
 {
     "name": "Stackoverflow",
@@ -56,7 +60,8 @@ export const data = [{
     "category": "Info",
     "rating": "5,471,704+",
     "downloads": "",
-    "age_required" : "10+"
+    "age_required" : "10+",
+    "download": ""
 },
 {
     "name": "Twitter",
@@ -68,7 +73,8 @@ export const data = [{
     "category": "Social",
     "rating": "",
     "downloads": "",
-    "age_required" : "13+"
+    "age_required" : "13+",
+    "download": ""
 },
 {
     "name": "Netflix",
@@ -80,7 +86,8 @@ export const data = [{
     "category": "Entertainment",
     "rating": "",
     "downloads": "",
-    "age_required" : "18+"
+    "age_required" : "18+",
+    "download": ""
 },
 {
     "name": "Gmail",
@@ -92,7 +99,8 @@ export const data = [{
     "category": "Social",
     "rating": "",
     "downloads": "",
-    "age_required" : "15+"
+    "age_required" : "15+",
+    "download": ""
 },
 {
     "name": "Maps",
@@ -104,7 +112,8 @@ export const data = [{
     "category": "Info",
     "rating": "4.5",
     "downloads": "",
-    "age_required" : "3+"
+    "age_required" : "3+",
+    "download": ""
 },
 {
     "name": "Fiverr",
@@ -116,7 +125,8 @@ export const data = [{
     "category": "Online_Earning",
     "rating": "4.8",
     "downloads": "129,269+",
-    "age_required" : "18+"
+    "age_required" : "18+",
+    "download": ""
 },
 {
     "name": "Whatsapp",
@@ -128,7 +138,8 @@ export const data = [{
     "category": "Social",
     "rating": "4.7",
     "downloads": "87,898,293+",
-    "age_required" : "16+"
+    "age_required" : "16+",
+    "download": ""
 },
 {
     "name": "Y8",

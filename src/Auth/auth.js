@@ -6,6 +6,7 @@ firebase.initializeApp(config);
 
 export const auth = firebase.auth();
 export const db = firebase.firestore();
+export const storageRef = firebase.storage();
 
 // user Sign Up  
 export const Register = (e) => {
@@ -13,7 +14,6 @@ export const Register = (e) => {
     var email = document.querySelector(".signUp-email");
     var pass = document.querySelector(".signUp-pass");
     var name = document.querySelector('.profile-name');
-
     if ((email.value.length && pass.value.length && name.value.length) !== 0) {
         auth.createUserWithEmailAndPassword(email.value, pass.value)
             .then(async (user) => {
@@ -21,10 +21,16 @@ export const Register = (e) => {
                 user.user.updateProfile({
                     displayName: name.value
                 })
-                await db.collection('userList').add({
-                    name: name.value,
-                    email: email.value
+                db.collection('userList').doc(`${auth.currentUser.uid}`).set({
+                    userData: {
+                        name: name.value,
+                        email: email.value,
+                        apps: []
+                    }
                 }).then(res => {
+                    // var emailwithoutdotcom = email.value.slice(0, -4);
+                    // database.ref().child(emailwithoutdotcom).set(name.value);
+                
                     console.log(res, 'added');
 
                 })

@@ -962,39 +962,6 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label, input[type=e
   text-align: center;
 }
 
-.user-profile-main-container #detail-main-container .content-header .user-img {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  box-shadow: 0 18px 24px rgba(50, 50, 93, 0.1), 0 10px 16px rgba(0, 0, 0, 0.08);
-  left: 50%;
-  transform: translateX(-50%);
-  margin-bottom: 1em;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.user-profile-main-container #detail-main-container .content-header #member-info {
-  font-size: 14px;
-  font-weight: 500;
-}
-
-.user-profile-main-container #detail-main-container table {
-  margin-top: 1em;
-}
-
-.user-profile-main-container #detail-main-container table tr td:nth-child(1) {
-  font-weight: 500;
-}
-
-.user-img {
-  border: 2px solid #171941;
-  background: #171941;
-  color: white;
-  
-}
 
 .anchor:hover {
   background: #f35698;
@@ -1261,3 +1228,105 @@ ul.size > li > button:focus, ul.size > li > button:hover, ul.size > li > button:
 #show {
   display: block;
 }
+
+
+
+.profile {
+  text-align: center;
+  width: 50%;
+  margin-left: 20%; 
+}
+.profile > h1 {
+  padding: 10px;
+}
+.profile > hr {
+  margin: 10px;
+}
+.profile > .user-img  > img{
+  border: 2px solid rgb(13, 194, 155);
+  border-radius: 50%;
+  padding: 10px;
+}
+.user-img > img:hover {
+  background: rgb(13, 194, 155);
+  transition: background 1s linear;
+}
+.profile-form > input , .profile-form > textarea{
+  outline: none;
+  font-size: 1em;
+  width: 100%;
+  border-top: 0;
+  border-right: 0;
+  border-left: 0;
+  padding: 10px;
+  margin: 10px;
+  background: transparent;
+  border-bottom: 2px solid black;
+}
+.profile-form > input:active , .profile-form > textarea:active, .profile-form > input:focus , .profile-form > textarea:focus {
+  border-bottom: 2px solid rgb(13, 194, 155);
+}
+.profile-form > button {
+  color: white;
+  background: rgb(13, 194, 155);
+  padding: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+  border-radius: 50px;
+  width: 50%;
+}
+.profile-navbar > nav{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgb(13, 194, 155);
+  color: white;
+  filter: drop-shadow(2px 2px 5px black);
+}
+.back:hover {
+ color: black;
+}
+button:active, button:focus {
+  outline: none;
+}
+.search-user{
+    min-width: 180px;
+    position: absolute;
+    right: 10%;
+    top: 50px;
+    background: rgba(255, 255, 255, 0.959);
+    color: black;
+    z-index: 1;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 0 none; 
+  }
+  .user-list {
+    display: flex;
+      flex-direction: column;
+  }
+  .user-list .user{
+    display: flex;
+        flex-direction: row;
+        padding: 5px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        cursor: pointer; 
+  }
+
+  .user-list .user img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+  .user-list .user h2 {
+    padding-left: 8px;
+    flex-grow: 1;
+    font-size: 14px; }
+   .user-list .user:last-child {
+    border-bottom: 0 none; 
+  }
+   .user-list .user:hover {
+    background: rgba(0, 0, 0, 0.123);
+    color: #f0458cee;
+   }

@@ -15,10 +15,10 @@ class Cards extends React.Component {
                                 <div className="card">
                                     <div className="card-image">
                                         <img src={info.icon} alt="icon" />
-                                        <span className="card-title" style={{ color: 'black' }} >{info.name}</span>
+                                        <span className="card-title" style={{ color: 'black' }} ></span>
                                     </div>
                                     <div className="card-content">
-                                        <p>{info.description.length !== 0 ? info.description : "no description"}</p>
+                                        <p>{info.name}</p>
                                     </div>
                                     <div className="card-action">
                                         <Link to={{ pathname: '/detail', state: { info: info } }} >Show Detail</Link>

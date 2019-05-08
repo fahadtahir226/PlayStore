@@ -4,7 +4,8 @@ import NavLinks from './partials/navLinks';
 import SideNav from './partials/sideNav';
 import { Link } from 'react-router-dom';
 import PopUpModel from './popUpModel';
-import { auth, SignOut } from '../../Auth/auth';
+import { auth, SignOut, db } from '../../Auth/auth';
+import SearchCard from './searchCard';
 
 class Nav extends React.Component {
 
@@ -21,7 +22,10 @@ class Nav extends React.Component {
             navText3: ["Daily Deals", "Sell", "Help & Contact"],
             modal: "",
             isAuthenticated: false,
-            userName: ""
+            userName: "",
+            apps: [],
+            display: false,
+            value: ''
         }
 
     }
@@ -31,20 +35,25 @@ class Nav extends React.Component {
 
             this.setState({ loading: true });
             if (res && res.email) {
-                await this.setState({ isAuthenticated: true, loading: false , userName: auth.currentUser.displayName })
-            } else {
-                await this.setState({ isAuthenticated: false, loading: false })
+                 this.setState({ isAuthenticated: true, loading: false , userName: auth.currentUser.displayName })
+                 
+                 db.collection("userList").doc(`${auth.currentUser.uid}`).get().then((data) => {
+                    var appData = data.data().userData.apps;
+                    this.setState({
+                        apps: appData
+                    })
+                })
+                } else {
+                 this.setState({ isAuthenticated: false, loading: false })
             }
         });
+    
     }
     render() {
-        const { modal, isAuthenticated, userName } = this.state;
-        // console.log(auth.currentUser.displayName);
+        const { modal, isAuthenticated, userName, apps, display, value } = this.state;
         return (
             
             <nav>
-            
-            {isAuthenticated ? console.log(auth) : null}
                 <div className="nav-wrapper">
                     <div className="row" style={{ marginBottom: 0 }}>
                         <Link to="#!" data-target="mobile-demo"
@@ -56,16 +65,36 @@ class Nav extends React.Component {
                         <Link to="/" className="brand-logo" >
                             {this.navLogos()}
                         </Link>
-                        <Link to="/cart"
+                        {isAuthenticated? 
+                        <Link to="/download"
                             onClick={() => this.Popup("bag")}
                         >
                             <i style={icon} className="material-icons right" >file_download</i>
+                            <span className="badge black" >{apps.length}</span>
                         </Link>
+                        :
+                        null}
                         <Link to="#!">
                             {window.innerWidth > 712 ?
-                                <input className="search-form col m2 l2 right" type="email" placeholder=" Search Here" /> : null}
+                                <input 
+                                className="search-form col m2 l2 right" 
+                                type="email"
+                                placeholder=" Search Here"
+                                onKeyUp={(e) => {
+                                    if(e.target.value.length !== 0){
+                                    this.setState({
+                                        display : true,
+                                        value: e.target.value
+                                    })
+                                }else {
+                                    this.setState({
+                                        display: false
+                                    })
+                                }
+                                }}
+                                /> : null}
                         </Link>
-
+                        {display ? <SearchCard value={value}  /> : null}
                         <NavLinks active={this.props.activeLink} text={localStorage.getItem("user") !== null ? this.state.navText2 : this.state.navText} />
                         <SideNav active={this.props.activeLink} text={localStorage.getItem("user") !== null ? this.state.navText2 : this.state.navText} />
                         <PopUpModel data={modal} hide={this.hide} />
@@ -73,13 +102,12 @@ class Nav extends React.Component {
 
                     {/* another nav */}
                     <div className="row upper-nav">
-                        <ul  >
-                                {isAuthenticated ? 
-                            <li> &nbsp;
-                                
+                        <ul>
+                            {isAuthenticated ? 
+                            <li>  &nbsp;
                                 <span style={{ color: "#f0458cee", paddingLeft: "5px" }}
                                     onClick={() => this.Popup("profile")}
-                                > Hi! {userName}</span>
+                                >{userName ? `Hi! ${userName}` : "My Profile"}</span>
                                     &nbsp;
                                 <span style={{ color: "#f0458cee", paddingLeft: "5px" }}
                                     onClick={(e) => SignOut(e)}
@@ -117,10 +145,14 @@ class Nav extends React.Component {
                             </ul>
                             : null
                         }
+                        {isAuthenticated ?
                         <Link to="/download"
-                            style={{ float: "right", paddingRight: 20 }}>
-                            Download <span style={{ color: "#f0458cee" }}></span>
-                        </Link>
+                        style={{ float: "right", paddingRight: 20 }}><span style={{
+                            color: '#f0458cee',
+                            fontSize: 20
+                        }}>{apps.length}</span> - My
+                             Downloads <span style={{ color: "#f0458cee" }}></span>
+                        </Link>: null}
                     </div>
                 </div>
 

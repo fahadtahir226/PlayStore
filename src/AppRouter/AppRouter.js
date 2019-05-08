@@ -1,10 +1,11 @@
 import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { auth } from '../Auth/auth';
+
 // Components
 
 import Home from "../screen/HomeComponent/home";
-import Download from "../component/PopupCards/cartCard";
+import Download from "../component/PopupCards/downloadCart";
 import GamesPage from "../screen/Games/gamePage";
 import Online_Earning from "../screen/Online_Earning/onlineEarning";
 import InfoPage from "../screen/Info/infoPage";
